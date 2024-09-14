@@ -1,0 +1,72 @@
+<html></html>
+<head>
+    <title>About Us</title>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <style>
+        body {
+            background-color: #e0e6e9;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function App() {
+            return (
+                <div className="flex justify-center items-center w-full h-full">
+                    <div className="bg-white p-10 rounded-lg shadow-lg flex w-3/4">
+                        <div className="w-1/2 pr-10">
+                            <h2 className="text-2xl font-bold mb-4">ABOUT US</h2>
+                            <p className="text-gray-600 mb-6">
+                                And produce say the ten moments parties. Simple innate summer fat appear basket his desire joy. Outward clothes promise at gravity do excited. Sufficient particular impossible by reasonable oh expression is. Yet preference connection unpleasant yet melancholy but end appearance. And excellence partiality estimating terminated day everything.
+                            </p>
+                            <div className="flex space-x-4">
+                                <button className="bg-green-500 text-white px-4 py-2 rounded shadow-lg hover:bg-green-600">LEARN MORE</button>
+                            </div>
+                        </div>
+                        <div className="w-1/2 flex flex-wrap">
+                            <div className="w-1/2 p-2">
+                                <div className="bg-white p-6 rounded-lg shadow-md text-center">
+                                    <h3 className="text-2xl font-bold">1000+</h3>
+                                    <p className="text-gray-600">Completed Projects</p>
+                                </div>
+                            </div>
+                            <div className="w-1/2 p-2">
+                                <div className="bg-white p-6 rounded-lg shadow-md text-center">
+                                    <h3 className="text-2xl font-bold">250+</h3>
+                                    <p className="text-gray-600">On Going Projects</p>
+                                </div>
+                            </div>
+                            <div className="w-1/2 p-2">
+                                <div className="bg-white p-6 rounded-lg shadow-md text-center">
+                                    <h3 className="text-2xl font-bold">500+</h3>
+                                    <p className="text-gray-600">Happy Clients</p>
+                                </div>
+                            </div>
+                            <div className="w-1/2 p-2">
+                                <div className="bg-white p-6 rounded-lg shadow-md text-center">
+                                    <h3 className="text-2xl font-bold">25</h3>
+                                    <p className="text-gray-600">Offices through out GLOB</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>

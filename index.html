@@ -1,0 +1,251 @@
+<html>
+<head>
+    <title>Healthcare</title>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .logo-blend {
+    background-color: transparent;
+        }
+        header {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensures it's above other content */
+    background-color: white; /* Optional: Set background color if needed */
+         }
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .slide-in {
+            animation: slideIn 1s ease-in-out;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        .bounce-in {
+            animation: bounceIn 1s ease-in-out;
+        }
+        @keyframes bounceIn {
+            0%, 20%, 40%, 60%, 80%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            70% {
+                transform: translateY(-5px);
+            }
+            90% {
+                transform: translateY(-2px);
+            }
+        }
+        .popup {
+            animation: popup 0.5s ease-in-out;
+        }
+        @keyframes popup {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .hover-float:hover {
+            transform: translateY(-10px);
+            transition: transform 0.3s ease-in-out;
+        }
+        .hover-grow:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .hover-underline-animation {
+            display: inline-block;
+            position: relative;
+            color: #041E42;
+        }
+        .hover-underline-animation:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #041E42;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        .hover-underline-animation:hover:after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .scroll-animation {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-animation.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .text-animation {
+            animation: textFadeIn 1s ease-in-out;
+        }
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+   
+    </style>
+</head>
+<body class="bg-white">
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useEffect } = React;
+
+        const useScrollAnimation = () => {
+            useEffect(() => {
+                const handleScroll = () => {
+                    const elements = document.querySelectorAll('.scroll-animation');
+                    elements.forEach(element => {
+                        const rect = element.getBoundingClientRect();
+                        if (rect.top < window.innerHeight) {
+                            element.classList.add('visible');
+                        }
+                    });
+                };
+
+                window.addEventListener('scroll', handleScroll);
+                handleScroll();
+
+                return () => {
+                    window.removeEventListener('scroll', handleScroll);
+                };
+            }, []);
+        };
+
+        const App = () => {
+            useScrollAnimation();
+
+            return (
+                <div>
+                    <header className="bg-gray-100 p-6 flex justify-between items-center fade-in">
+                        <img src="resources\logo1.jpg" alt="Logo" className="w-36 h-auto logo-blend"/>
+                        <nav className="space-x-6">
+                            <a href="#" className="text-gray-600 hover-grow hover-underline-animation">Home</a>
+                            <a href="about_us.html" className="text-gray-600 hover-grow hover-underline-animation">About</a>
+                            <a href="#services  " className="text-gray-600 hover-grow hover-underline-animation">Services</a>
+                            <a href="contact.html" className="text-gray-600 hover-grow hover-underline-animation">Contact</a>
+                        </nav>
+                        <a href="login_page.html">
+                        <button className="bg-[#041E42] text-white px-6 py-2 rounded">Login or Sign Up</button>
+                        </a>
+                    </header>
+                    <main>
+                        <section className="bg-gradient-to-b from-[#E6F2FF] to-white p-12 flex justify-between items-center slide-in scroll-animation">
+                            <div className="mr-8">
+                                <h1 className="text-4xl font-bold text-[#041E42] text-animation">Quality Health Care For Family.</h1>
+                                <p className="text-gray-600 mt-6 text-animation">Streamlining Communication: Enhancing Efficiency in Insurance-Hospital Interactions to Reduce Patient Wait Times</p>
+                                <button className="bg-[#041E42] text-white px-6 py-2 rounded mt-6 text-animation">Learn More</button>
+                            </div>
+                            <img src="resources\banner1.png" alt="Healthcare Image" className="w-96 h-auto"/>
+                        </section>
+                        <section id="services" className="p-12 text-center scroll-animation">
+                            <h2 className="text-3xl font-bold text-[#041E42] text-animation">Our Services</h2>
+                            <div className="flex justify-center space-x-12 mt-12">
+                                <div className="bg-white p-6 shadow-md bounce-in hover-float">
+                                    <img src="https://via.placeholder.com/100x100?text=Service+1" alt="Service 1" className="mx-auto"/>
+                                    <h3 className="text-xl font-bold text-[#041E42] mt-6 text-animation">Real Time Bed Management</h3>
+                                    <p className="text-gray-600 mt-2 text-animation">Description of service 1.</p>
+                                </div>
+                                <div className="bg-white p-6 shadow-md bounce-in hover-float">
+                                    <img src="https://via.placeholder.com/100x100?text=Service+2" alt="Service 2" className="mx-auto"/>
+                                    <h3 className="text-xl font-bold text-[#041E42] mt-6 text-animation">Insurance Claim</h3>
+                                    <p className="text-gray-600 mt-2 text-animation">Description of service 2.</p>
+                                </div>
+                                <div className="bg-white p-6 shadow-md bounce-in hover-float">
+                                    <img src="https://via.placeholder.com/100x100?text=Service+3" alt="Service 3" className="mx-auto"/>
+                                    <h3 className="text-xl font-bold text-[#041E42] mt-6 text-animation">Patient Portfolio</h3>
+                                    <p className="text-gray-600 mt-2 text-animation">Description of service 3.</p>
+                                </div>
+                            </div>
+                        </section>
+                        <section className="bg-gray-50 p-12 flex justify-between items-center slide-in scroll-animation">
+                            <img src="https://via.placeholder.com/600x400?text=Healthcare+Image" alt="Healthcare Image" className="w-96 h-auto mr-8"/>
+                            <div>
+                                <h2 className="text-3xl font-bold text-[#041E42] text-animation">Committed To Build A Positive, Safe, Patient Focused Platform.</h2>
+                                <ul className="text-gray-600 mt-6 space-y-4 text-animation">
+                                    <li><i className="fas fa-check text-[#98FF98]"></i> High quality care</li>
+                                    <li><i className="fas fa-check text-[#98FF98]"></i> Experienced Professional</li>
+                                    <li><i className="fas fa-check text-[#98FF98]"></i> Modern facilities</li>
+                                    <li><i className="fas fa-check text-[#98FF98]"></i> Patient-centered approach</li>
+                                </ul>
+                                <button className="bg-[#041E42] text-white px-6 py-2 rounded mt-6 text-animation">Learn More</button>
+                            </div>
+                        </section>
+                        <section className="p-12 flex justify-between fade-in scroll-animation">
+                           {/* <div className="mr-8">
+                                <h2 className="text-3xl font-bold text-[#041E42] text-animation">Get in Touch</h2>
+                                <p className="text-gray-600 mt-6 text-animation">We are here to help you with any questions or concerns you may have.</p>
+                                <form className="mt-6 space-y-6">
+                                    <div className="flex space-x-6">
+                                        <input type="text" placeholder="Name" className="border p-4 w-1/2 text-animation"/>
+                                        <input type="email" placeholder="Email" className="border p-4 w-1/2 text-animation"/>
+                                    </div>
+                                    <textarea placeholder="Message" className="border p-4 w-full text-animation"></textarea>
+                                    <button className="bg-[#041E42] text-white px-6 py-2 rounded popup text-animation">Send Message</button>
+                                </form>
+                            </div>
+                            <div>
+                                <h2 className="text-3xl font-bold text-[#041E42] text-animation">Quick Contact</h2>
+                                <p className="text-gray-600 mt-6 text-animation">You can also reach us quickly through the following contact details.</p>
+                                <ul className="text-gray-600 mt-6 space-y-4 text-animation">
+                                    <li><i className="fas fa-phone text-[#041E42]"></i> (123) 456-7890</li>
+                                    <li><i className="fas fa-envelope text-[#041E42]"></i> info@healthcare.com</li>
+                                    <li><i className="fas fa-map-marker-alt text-[#041E42]"></i> 123 Healthcare St, City, Country</li>
+                                </ul>
+                            </div> */}
+                        </section>
+                    </main>
+                    <footer className="bg-[#041E42] text-white text-center p-6">
+                        &copy; 2023 Healthcare. All rights reserved.
+                    </footer>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
